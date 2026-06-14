@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { HealthCheckResponse } from "@food-delivery/types";
 import { api } from "../lib/axios";
-import { ActivityIndicator, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
   const {
@@ -13,9 +13,9 @@ export default function HomeScreen() {
     queryFn: () =>
       api.get<HealthCheckResponse>("/health").then((res) => res.data),
   });
-  console.log("API URL:", process.env.EXPO_PUBLIC_API_URL);
+
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Food Delivery</Text>
       <Text>Connection Text</Text>
       {isLoading && <ActivityIndicator size="large" color="#ff6b35" />}
@@ -34,3 +34,14 @@ export default function HomeScreen() {
     </View>
   );
 }
+
+const styles=StyleSheet.create({
+  container:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:"center",
+    backgroundColor:"#fff",
+    padding:24
+  }
+
+})

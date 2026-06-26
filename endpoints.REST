@@ -1,5 +1,21 @@
 @baseUrl = http://localhost:3000/api
 @contentType = application/json
-
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMTVkZWEwYi1mOWQwLTRlZjgtOWNlYi1mYzIwNmMwM2QyY2IiLCJlbWFpbCI6Imhhc3NhbUBnbWFpbC5jb20iLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3ODI0OTk1NzYsImV4cCI6MTc4MzEwNDM3Nn0.vktNmiJNuxrrmZMh0kYeffvdqVHBhfQGrYPPnnFs428
 
 GET {{baseUrl}}/health
+###############
+GET {{baseUrl}}/db-test
+################
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+    "firstName":"Hassam",
+    "lastName":"Ata",
+    "email":"hassam@gmail.com",
+    "password":"123456",
+    "role":"CUSTOMER"
+}
+#########
+GET {{baseUrl}}/auth/me   
+Authorization:Bearer {{token}}
